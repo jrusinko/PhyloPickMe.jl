@@ -1,0 +1,13 @@
+name = "PhyloPickMe"
+uuid = "0dfd6e21-1466-4d69-a740-ac598855cece"
+authors = ["Joseph Rusinko"]
+version = "1.0.0-DEV"
+
+[compat]
+julia = "1.6.7"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
