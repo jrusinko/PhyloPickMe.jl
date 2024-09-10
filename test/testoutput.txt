@@ -1,0 +1,33 @@
+Sample, PickMeScore, PickMe Classification ,Occupancy 
+Sample_V_dichotoma177,0.7609953383851146,bad,1.0
+Sample_S_punctata242,0.7865023994455574,bad,1.0
+Sample_I_calycinum229,0.8054591958543554,bad,1.0
+Sample_I_cornifolium231,0.8121093074422686,bad,1.0
+Sample_I_lehmanii228,0.8179438473154312,bad,1.0
+Sample_D_obovata203,0.8337170630424243,good,1.0
+Sample_I_grandiflorum142,0.8484456306687833,good,1.0
+Sample_I_lehmanii_squamosum176,0.8534001065161141,good,1.0
+Sample_S_punctata178,0.8587031642748202,good,1.0
+Sample_I_tingoense112,0.8675694052602594,good,1.0
+Sample_I_nitidum207,0.8803117290563229,good,1.0
+Sample_I_umbellatum127,0.8787673216802493,good,1.0
+Sample_I_nitidum113,0.8669313589705891,good,1.0
+Sample_I_salpoanum181,0.8876776027568349,good,1.0
+Sample_A_arborescens2428,0.9013725827483303,good,1.0
+Sample_I_cornifolium232,0.9102212580057519,good,1.0
+Sample_E_lorentzii184,0.9139376499509325,good,0.9333333333333333
+Sample_I_cyan265_4,0.9253871894245921,good,1.0
+Sample_I_cornifolium249,0.9269461180011527,good,1.0
+Sample_I_confertiflorum226,0.9384753514880096,very good,1.0
+Sample_I_australe117,0.9665133372402098,very good,1.0
+Sample_I_edule173,0.972647728842802,very good,1.0
+Sample_I_loxense77,0.9846570853020535,exceptional,1.0
+Sample_A_arborescens250,0.9963746564020974,exceptional,1.0
+Sample_Potato,0.9968097296826366,exceptional,1.0
+Sample_A_arborescens98,0.9979699250974041,exceptional,1.0
+Sample_E_lorentzii28,0.9979699250974041,exceptional,1.0
+Sample_I_australe183,0.9979699250974042,exceptional,1.0
+Sample_Nicotiana,0.9979699250974042,exceptional,1.0
+Sample_Physalis_peruvianum91,0.9979699250974042,exceptional,1.0
+Sample_Spimp,0.9979699250974042,exceptional,1.0
+Sample_Tomato,0.9979699250974042,exceptional,1.0

@@ -1,4 +1,4 @@
-using PhyloPickMe
+using .PhyloPickMe
 using Documenter
 
 DocMeta.setdocmeta!(PhyloPickMe, :DocTestSetup, :(using PhyloPickMe); recursive=true)

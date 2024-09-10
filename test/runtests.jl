@@ -1,6 +1,12 @@
 using PhyloPickMe
 using Test
+using CSV
+using Mmap
 
-@testset "PhyloPickMe.jl" begin
-    # Write your tests here.
-end
+@test 1 + 2 == 3
+
+PickMe("sampletrees.txt", "testoutput.txt")
+#checkout = open("sampleoutput.txt")
+testout = open("testoutput.txt")
+checkout = open("CheckOutput.txt")
+@test Mmap.mmap(checkout) == Mmap.mmap(testout)
