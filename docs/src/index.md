@@ -1,7 +1,8 @@
+
+
 ```@meta
 CurrentModule = PhyloPickMe
 ```
-
 # PhyloPickMe.jl Documentation
 
 
@@ -19,7 +20,7 @@ a full analysis of the data based on Bayesian Analysis of whether or not the dat
 
 ## Reference
 For both the PhyloPickMe package and the underlying sample selection methodology please cite:
-#
+
 Joseph Rusinko, Yu Cai, Allison Doherty, Katherine Thompson, Julien Boutte, Mark Fishbein, and Shannon C. K. Straub (2024).
   PickMe: Sample Selection for species tree reconstruction using coalescent weighted quartets
   under review
@@ -27,8 +28,8 @@ Joseph Rusinko, Yu Cai, Allison Doherty, Katherine Thompson, Julien Boutte, Mark
 
 
 ## Function Usage
-```@docs
-    PickMe(InputTreeFile::String, OutputFile::String)
+```
+PickMe(InputTreeFile::String, OutputFile::String)
 ```
 ## PickMe Tutorial For Julia Beginners
 
