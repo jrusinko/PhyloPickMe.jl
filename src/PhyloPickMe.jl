@@ -26,7 +26,7 @@ Classify all samples which occur in the InputTreeFile using PickMe.
 """
 function PickMe(InputTreeFile::String, OutputFile::String)
     genetrees = readMultiTopology(InputTreeFile)
-    prange = range(0.0, 1, 601)
+    prange = range(0.0, 1.0, 601)
     global prange = collect(prange)
     global pk = powers_matrix(prange, size(genetrees)[1])
     global pnk = pk[reverse(1:601), :]
