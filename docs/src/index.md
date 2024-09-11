@@ -59,14 +59,14 @@ When working with Julia you will see a command line that either says
 ```julia
 julia>
 ```
-This is the promt you want for running specific Julia Code.
+This is the promPt you want for running specific Julia Code.
 
 or
 ```julia
     packageName>
 ```
 
-This is the prompt you want for loading or modifing Julia Packages.   You can toggle between the options using "]" to get to the package option a
+This is the prompt you want for loading or modifYing Julia Packages.   You can toggle between the options using "]" to get to the package option a
 nd backspace to return to the Julia prompt.
 
 ## add the Julia Package
@@ -76,7 +76,7 @@ julia> using Pkg
 ```
 Shift into package mode by toggling with "]".  Add the PickMe Package using 
 ```julia
-package> add PickMe
+package> add PhyloPickMe
 ```
 
 You may need to click "y" to add the package, and wait for a couple of minutes as the program is setup.
@@ -108,7 +108,7 @@ Some gene tree pipelines, may include the gene identifier along with the sample 
 ### Run PickMe
 Assuming your treefile is in the active folder and is labeled "genetrees.txt" run the command
 ```julia
-PickMeJulia("genetrees.txt","PicKmeOutputMyGeneTrees.csv")
+PickMe("genetrees.txt","PicKmeOutputMyGeneTrees.csv")
 ```
 
 ### Begin species tree analysis
