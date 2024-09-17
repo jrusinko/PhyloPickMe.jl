@@ -1,7 +1,7 @@
 name = "PhyloPickMe"
 uuid = "0dfd6e21-1466-4d69-a740-ac598855cece"
 authors = ["Joseph Rusinko"]
-version = "1.0.0"
+version = "1.0.1"
 
 [deps]
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
