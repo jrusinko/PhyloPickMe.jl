@@ -1,7 +1,7 @@
 module PhyloPickMe
 
 
-using Statistics
+#using Statistics
 using FLoops
 using PhyloNetworks
 #using PhyloPlots
@@ -9,7 +9,7 @@ using DataFrames
 using DelimitedFiles
 using SparseArrays
 using CSV
-using LinearAlgebra
+#using LinearAlgebra
 using FastPow
 
 
