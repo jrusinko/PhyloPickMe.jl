@@ -27,9 +27,9 @@ Classify all samples which occur in the InputTreeFile using PickMe.
 function PickMe(InputTreeFile::String, OutputFile::String)
     genetrees = readMultiTopology(InputTreeFile)
     prange = range(0.0, 1.0, 601)
-    global prange = collect(prange)
-    global pk = powers_matrix(prange, size(genetrees)[1])
-    global pnk = pk[reverse(1:601), :]
+    const prange = collect(prange)
+    const pk = powers_matrix(prange, size(genetrees)[1])
+    const pnk = pk[reverse(1:601), :]
     taxa::Vector{String} = tipLabels(genetrees)
     taxacounts = count_taxa_occurrences(genetrees, taxa)
     taxaDict = makeTaxaDict(taxa)
