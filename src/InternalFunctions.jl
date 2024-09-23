@@ -22,30 +22,31 @@ function convertDF(d, mytaxaDict)
     return d
 end
 
-function numer(k::Integer, n::Integer)
+function numer(pk::Matrix{Float64}, pnk::Matrix{Float64}, k::Integer, n::Integer)
     ans = dot(pk[202:600, k+1], pnk[202:600, n-k+1])
     ans = ans + 0.5 * pk[201, k+1] * pnk[201, n-k+1] + 0.5 * pk[601, k+1] * pnk[601, n-k+1]
     return ans
 end
 
-function denomi(k::Integer, n::Integer)
+function denomi(pk::Matrix{Float64}, pnk::Matrix{Float64}, k::Integer, n::Integer)
     ans = dot(pk[2:200, k+1], pnk[2:200, n-k+1])
     ans = ans + 0.5 * pk[1, k+1] * pnk[1, n-k+1] + 0.5 * pk[201, k+1] * pnk[201, n-k+1]
     return ans
 end
 
-function weight(k::Int, n::Int)
-    num = numer(k, n)
-    denom = denomi(k, n)
+function weight(pk::Matrix{Float64}, pnk::Matrix{Float64}, k::Int, n::Int)
+    num = numer(pk, pnk, k, n)
+    denom = denomi(pk, pnk, k, n)
     value = 2 * abs(num / (denom + num) - 0.5)
     return value
 end
 
-function computeScoreTable(scorevec::DataFrame)
+function computeScoreTable(pk::Matrix{Float64}, pnk::Matrix{Float64}, scorevec::DataFrame)
     keys = Tuple{Int64,Int64}.(eachrow(scorevec))
-    values::Vector{Float64} = weight.(scorevec[:, 1], scorevec[:, 2])
+    values::Vector{Float64} = weight.(Ref(pk), Ref(pnk), scorevec[:, 1], scorevec[:, 2])
     return Dict(keys .=> values)
 end
+
 
 function makeTaxaDict(setoftaxa)
     taxaDict = Dict(setoftaxa[1] => 1::Integer)
@@ -106,24 +107,24 @@ end
 
 function classification(n)
     classification = "error"
-    if n > .9802
+    if n > 0.9802
         classification = "exceptional"
-    elseif n > .9355
+    elseif n > 0.9355
         classification = "very good"
-    elseif n > .8182
+    elseif n > 0.8182
         classification = "good"
-    elseif n > .5
+    elseif n > 0.5
         classification = "bad"
-    elseif n >- 0
+    elseif n > -0
         classification = "very bad"
     end
-    return(classification)
+    return (classification)
 end
 
 function MakeClassVector(out)
     class = []
-    for i = 1:size(out,1)
-        push!(class,classification(out[i,2]))
+    for i = 1:size(out, 1)
+        push!(class, classification(out[i, 2]))
     end
     return class
 end
@@ -138,7 +139,7 @@ function runLoop(tax, taxscores, sarray)
         #spot = length(tax)
         minval = minimum(taxscores)
         minloc = argmin(taxscores)[2]
-        classval =  classification(minval) 
+        classval = classification(minval)
         push!(out, [tax[minloc]::String, minval::Float64])
         sarray = removerow(sarray, minloc)
         taxscores = ColMeans(sarray)
@@ -184,4 +185,3 @@ function add_occupancy(out, countdict)
     tcounts = get_counts_for_taxa(countdict, out)
     return tcounts
 end
-
