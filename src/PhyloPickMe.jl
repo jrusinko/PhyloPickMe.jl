@@ -11,7 +11,8 @@ using SparseArrays
 using CSV
 using LinearAlgebra
 using FastPow
-
+using Dates
+using Pkg
 
 ## INclude InternalFunctions
 
@@ -48,7 +49,16 @@ function PickMe(InputTreeFile::String, OutputFile::String)
     coverage = tcounts / size(genetrees)[1]
     classes = MakeClassVector(output)
     output = [output classes coverage]
+    ctime = now()
+    currenttime = Dates.format(ctime, "mm-dd-yyyy HH:MM:SS")
+    numgenetrees = string(size(genetrees)[1])
+    numsamples = string(size(taxa)[1])
+    project_info = Pkg.project()
+    versionNumber = string(project_info.version)
+
+
     open(OutputFile; write=true) do f
+        write(f, "#PickMe version ", versionNumber, " was run on ", currenttime, " using the input file ", InputTreeFile, " which contained ", numgenetrees, " gene trees, and ", numsamples, " samples. \n",)
         write(f, "Sample, PickMeScore, PickMe Classification ,Occupancy \n")
         writedlm(f, output, ",")
     end
