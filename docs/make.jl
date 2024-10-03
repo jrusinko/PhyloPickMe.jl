@@ -1,5 +1,6 @@
 using PhyloPickMe
 using Documenter
+using DocMeta
 
 DocMeta.setdocmeta!(PhyloPickMe, :DocTestSetup, :(using PhyloPickMe); recursive=true)
 

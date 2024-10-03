@@ -1,114 +1,142 @@
-```markdown
 ```@meta
 CurrentModule = PhyloPickMe
 ```
+# PhyloPickMe.Jl Documentation
 
-# PhyloPickMe.jl Documentation
 
-**PhyloPickMe** is a Julia package for selecting samples for inclusion in a Species Tree Analysis.
+PhyloPickMe is a is a [Julia](http://julialang.org) package for selecting samples
+for inclusion in a Species Tree Analysis.
 
-## Context
-Biologists have access to vast amounts of DNA sequence data. For a fixed collection of species, individual samples are often missing from the genetic data available. This raises the question: how can one determine when there is enough data to justify including a particular sample/species in an analysis? Traditionally, researchers have relied on ad hoc methodologies (e.g., requiring a sample to be present in 75% of all sequenced genes).
+# Context
+Biologists have access to vast amounts of DNA sequence data.  Individual samples
+are usually missing from genetic data they have access to for a fixed collection of Species. So, how does one determine when there is enough data
+to justify including a particular sample/species in one's analysis?  Typically, researchers have used ad hoc methodologies to
+make this decision (i.e., requiring the sample to be on 75% of the sequenced genes).  
 
-**PickMe** is a software tool that recommends which samples should be included in a full analysis based on Bayesian analysis, assessing whether the data can be described by a single species tree. Thus, PickMe can be a valuable component of the species tree analysis pipeline.
+Given a collection of estimated gene trees, PickMe is a software tool that recommends which samples should be included in
+a complete data analysis based on Bayesian Analysis of whether or not a single species tree can describe the data.  Thus, PickMe can be a part of the species tree analysis pipeline.
 
 ## Reference
 For both the PhyloPickMe package and the underlying sample selection methodology, please cite:
 
-> Joseph Rusinko, Yu Cai, Allison Doherty, Katherine Thompson, Julien Boutte, Mark Fishbein, and Shannon C. K. Straub (2024).  
-> **PickMe: Sample Selection for Species Tree Reconstruction Using Coalescent Weighted Quartets**. Under review.
+Joseph Rusinko, Yu Cai, Allison Doherty, Katherine Thompson, Julien Boutte, Mark Fishbein, and Shannon C. K. Straub (2024).
+ PickMe: Sample Selection for species tree reconstruction using coalescent weighted quartets
+ under review
+ 
+
 
 ## Function Usage
-```julia
-PickMe(InputTreeFile::String, OutputFile::String)
 ```
+PhyloPickMe.PickMe(InputTreeFile::String, OutputFile::String)
+```
+## PickMe Tutorial For Julia Beginners
 
-## PickMe Tutorial for Julia Beginners
 
-### Installation 
+# Installation 
 
-#### Install Julia
-Use the Julia [official link](http://julialang.org) to install Julia on your machine of choice. PickMe is independent of your operating system.
+## Install Julia
+Use the Julia  [Julia](http://julialang.org) link to install Julia on your machine of choice.  PickMe itself is not dependent on your operating system.
 
-#### Select a Code Editor
-Choose and install one of the following code editors (similar to installing R-Studio for R users):
+## Select a code editor
 
-- **[Visual Studio Code](https://code.visualstudio.com)**: An editor and integrated development environment (IDE) for Julia.
-- **[Juno](http://junolab.org)**: An IDE for Julia based on the [Atom](http://atom.io/) editor.
-- **[Jupyter](http://jupyter.org)**: A notebook interface for Julia.
+Select and install one of the following code editors.  (For R-natives, this is like installing R-Studio to run code written in the 
+R programming language.)
 
-#### Open Julia in Your Editor of Choice
-When working with Julia, you will encounter a command line that says:
+- [Visual Studio Code](https://code.visualstudio.com) provides an editor
+ and an integrated development environment (IDE) for Julia: 
+- [Juno](http://junolab.org) provides an IDE for Julia,
+ based on the [Atom](http://atom.io/) editor.
+- A [Jupyter](http://jupyter.org) notebook
 
-```julia
+
+## Open Julia in your editor of choice.
+
+## note for Julia
+When working with Julia, you will see a command line that either says
+
+```Julia
 julia>
 ```
-This is the prompt you want for running specific Julia code.
+This is the prompt you want for running specific Julia Code.
 
-Alternatively, you might see:
-
+or
 ```julia
-packageName>
+ packageName>
 ```
-This prompt indicates you are in package mode. You can toggle between modes using `]` to enter package mode and backspace to return to the Julia prompt.
 
-#### Add the Julia Package
-First, let Julia know you want to use its package functions by running:
+This is the prompt you want for loading or modifying Julia Packages.   You can toggle between the options using "]" to get to the package option a
+nd backspace to return to the Julia prompt.
 
+## add the Julia Package
+First, tell Julia you want to use its package functions by running.
 ```julia
 julia> using Pkg
 ```
-
-Then, shift into package mode by toggling with `]`. Add the PickMe package using:
-
-```julia
-pkg> add PhyloPickMe
+Shift into package mode by toggling with "]".  Add the PickMe Package using 
+```Julia
+package> add PhyloPickMe
 ```
 
-You may need to press "y" to confirm the addition, and wait a couple of minutes while the program sets up.
+You may need to click "y" to add the package and wait for a couple of minutes for the program to be set up.
 
 Finally, toggle back to Julia mode by pressing backspace.
 
-#### Confirm the Julia Package is Working
-To precompile the Julia code and test that the program has been successfully installed, run the following code:
-
-```julia
-julia> PickMe("sampletrees.txt", "Mytestoutput.csv")
+## Confirm the Julia package is working
+To pre-compile the Julia code and test that the program has successfully been installed, run the code
+```Julia
+julia> PickMeJulia("sampletrees.txt","Mytestoutput.csv")
 ```
 
-The output in `Mytestoutput.csv` should match the `testoutput.txt` file on GitHub.
+The output in "Mytesttouput.csv" should match the "testoutput.txt" file on GitHub.
 
-## Running PickMe
+## Running Pick Me
 
-### Estimate Initial Gene Trees Using All Available Data
-Estimate gene trees for your sequence data using your method of choice (this does not require Julia).
 
-### Input File Requirements
-Trees should be collected into a single file, with one gene tree in Newick format per line, each ending with a semicolon (`;`).
+### Estimate Initial Gene trees using all available data
+Estimate gene trees for your sequence data using your method of choice. (does not Require Julia). 
 
-**PickMe** requires a `.txt` file including all phylogenetic trees generated by phylogenomic tools (e.g., RAxML, IQ-TREE). All tree files must have the same sample names (e.g., Sample_Potato).
+### Input file requirements
 
-Some gene tree pipelines may include the gene identifier along with the sample in each of the individual gene trees. **PickMe** will assume that each identifier/sample combination is its own unique sample. If this is the case, the `.txt` file can be cleaned using [CTN.py](https://github.com/juboutte?tab=repositories).
+Trees should be collected into a single file, with one gene tree in Newick Format per line ending in with a;.
+
+PickMe and PickMeQ require a .txt file including all phylogenetic trees generated by phylogenomic tools (e.g., RAxML, IQ-TREE). The tree files must have the same sample names (e.g., cat). 
+
+Some gene tree pipelines may include the gene identifier and the sample in each gene tree.  PickMe will assume that each identifier/sample combination is its own unique sample. If this is the case, the .txt file can be cleaned using [CTN.py](https://github.com/juboutte?tab=repositories).
 
 ### Run PickMe
-Assuming your tree file is in the active folder and labeled `genetrees.txt`, run the command:
-
-```julia
-julia> PickMe("genetrees.txt", "PickMeOutputMyGeneTrees.csv")
+Assuming your tree file is in the active folder and is labeled "genetrees.txt" run the command
+```Julia
+PickMe("genetrees.txt","PicKmeOutputMyGeneTrees.csv")
 ```
 
-### Begin Species Tree Analysis
-We recommend beginning your species tree analysis with sequence alignment using only the samples identified by **PickMe** as "Good," "Very Good," or "Exceptional."
+### Begin species tree analysis
+We recommend running your species tree analysis beginning with sequence alignment using only the
+samples identified by PickMe, as "Good", "Very Good", or "Exceptional".
+
+
+
 
 ### Warnings
-- **PickMe** only uses the topology of each input gene tree and safely ignores bootstrap values or branch lengths. However, we recommend not estimating these values in your pre-PickMe analysis to save time.
-- **PickMe** assumes a single individual per species. While it will run with multiple samples per species, it will treat each individual as its own species, which is **not recommended**.
-- **PickMe** should not be used as a test for hybridization, as hybrid samples may be recommended by **PickMe** (see the supplemental material of the article for specific details).
+PickMe only uses the topology of each of the input gene trees.  It will safely ignore Bootstrap values or branch lengths.  However, we recommend 
+not estimating these values in your pre-PickMe analysis in order to save time. 
+
+PickMe assumes a single individual per species. While it will run with multiple samples per species, it will treat each individual as its own species, which is Not Recommended.
+
+PickMe should not be used as a test for hybridization, as hybrid samples have the potential to be recommended by PickMe (see the Supplemental Material of the article for specific details).
 
 ### Related Packages
-The package [PhyloNetworks](https://juliaphylo.github.io/PhyloNetworks.jl/dev/) may be a useful tool for exploring non-tree-based artifacts of the set of gene trees, which **PickMe** is not designed to address.
+The package [PhyloNetworks](https://juliaphylo.github.io/PhyloNetworks.jl/dev/) may be a valuable tool for exploring non-tree-based artifacts of the set of gene trees, which PickMe is not designed to address.
 
-> Claudia Solís-Lemus, Paul Bastide, and Cécile Ané (2017).  
-> **PhyloNetworks: A Package for Phylogenetic Networks**.  
-> *Molecular Biology and Evolution* 34(12): 3292–3298.  
-> [doi:10.1093/molbev/msx235](https://doi.org/10.1093/molbev/msx235)
+Claudia Solís-Lemus, Paul Bastide and Cécile Ané (2017).
+ PhyloNetworks: a package for phylogenetic networks.
+ [Molecular Biology and Evolution](https://academic.oup.com/mbe/article/doi/10.1093/molbev/msx235/4103410/PhyloNetworks-a-package-for-phylogenetic-networks?guestAccessKey=230afceb-df28-4160-832d-aa7c73f86369)
+ 34(12):3292–3298.
+ [doi:10.1093/molbev/msx235](https://doi.org/10.1093/molbev/msx235)
+
+###
+This GitHub also contains an R-script that can be used to drop samples that are not recommended by PickMe from a folder of DNA sequences.
+
+
+```@autodocs
+Modules = [PhyloPickMe]
+```

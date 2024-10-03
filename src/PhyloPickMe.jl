@@ -1,6 +1,4 @@
 module PhyloPickMe
-
-
 using Statistics
 using FLoops
 using PhyloNetworks
