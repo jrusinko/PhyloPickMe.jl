@@ -24,6 +24,7 @@ export PickMe
 Classify all samples which occur in the InputTreeFile using PickMe.
 """
 function PickMe(InputTreeFile::String, OutputFile::String)
+    VersionNumber = "1.0.9"
     genetrees = readMultiTopology(InputTreeFile)
     prange = range(0.0, 1.0, 601)
     prange = collect(prange)
@@ -52,11 +53,11 @@ function PickMe(InputTreeFile::String, OutputFile::String)
     numgenetrees = string(size(genetrees)[1])
     numsamples = string(size(taxa)[1])
     project_info = Pkg.project()
-    versionNumber = string(project_info.version)
+   
 
 
     open(OutputFile; write=true) do f
-        write(f, "#PickMe version ", versionNumber, " was run on ", currenttime, " using the input file ", InputTreeFile, " which contained ", numgenetrees, " gene trees, and ", numsamples, " samples. \n",)
+        write(f, "#PickMe version ", VersionNumber, " was run on ", currenttime, " using the input file ", InputTreeFile, " which contained ", numgenetrees, " gene trees, and ", numsamples, " samples. \n",)
         write(f, "Sample, PickMeScore, PickMe Classification ,Occupancy \n")
         writedlm(f, output, ",")
     end
